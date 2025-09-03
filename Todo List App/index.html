@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Todo List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-check-double"></i>
+        <span>ProductiveDay</span>
+      </div>
+      <div class="datetime">
+        <div class="date">
+          <i class="far fa-calendar"></i>
+          <span id="currentDate">Loading date...</span>
+        </div>
+        <div class="time">
+          <i class="far fa-clock"></i>
+          <span id="currentTime">Loading time...</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="todo-app">
+        <div class="app-header">
+          <h1><i class="fas fa-tasks"></i> Todo List</h1>
+          <p>Organize your tasks efficiently</p>
+        </div>
+
+        <div class="input-section">
+          <div class="input-container">
+            <input
+              id="taskInput"
+              type="text"
+              placeholder="What needs to be done?"
+              maxlength="100"
+            />
+            <button id="addBtn" class="add-btn">
+              <i class="fas fa-plus"></i> Add Task
+            </button>
+          </div>
+          <div id="errorMessage" class="error-message"></div>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div id="todoStats" class="stats">
+          <span id="totalTasks">0 tasks</span>
+          <span id="completedTasks">0 completed</span>
+        </div>
+
+        <div id="todos" class="todo-list"></div>
+
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-clipboard-list"></i>
+          <p>No tasks yet. Add a task to get started!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          <i class="fas fa-code"></i>
+          <span>Crafted with passion by Navneeth Sortur</span>
+        </div>
+        <div class="footer-icons">
+          <a
+            href="https://github.com/navneeth-sortur"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/navneeth-sortur-5b3125169/"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="mailto:navneeth.sortur@gmail.com"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 ProductiveDay App. Turning ideas into accomplishments.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
