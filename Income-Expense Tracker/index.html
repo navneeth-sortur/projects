@@ -3,49 +3,146 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Income-Expense Tracking App</title>
+    <title>FinTrack - Income & Expense Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <h1>Income-Expense Tracker Application</h1>
-    <hr width="700px" color="black" />
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <i class="fas fa-wallet"></i>
+        <span>FinTrack</span>
+      </div>
+      <div class="datetime" id="datetime">
+        <i class="far fa-clock"></i>
+        <span id="current-date-time">Loading...</span>
+      </div>
+    </nav>
 
+    <!-- Main Content -->
     <div class="container">
-      <h3>Your Current Balance</h3>
-      <h1 id="balance">&#x20B9;0.00</h1>
+      <h1>Track Your Finances</h1>
 
-      <div class="inc-exp-container">
-        <div>
-          <h4>Income</h4>
-          <p class="money-plus" id="money-plus">&#x20B9;0.00</p>
+      <!-- Balance Card -->
+      <div class="card">
+        <div class="balance-container">
+          <p class="balance-label">Your Current Balance</p>
+          <h2 class="balance-amount" id="balance">₹0.00</h2>
         </div>
-        <div>
-          <h4>Expense</h4>
-          <p class="money-minus" id="money-minus">&#x20B9;0.00</p>
+
+        <!-- Income-Expense Summary -->
+        <div class="summary">
+          <div class="summary-item income">
+            <p class="summary-label">Income</p>
+            <p class="summary-amount" id="money-plus">₹0.00</p>
+          </div>
+          <div class="summary-item expense">
+            <p class="summary-label">Expense</p>
+            <p class="summary-amount" id="money-minus">₹0.00</p>
+          </div>
         </div>
       </div>
 
-      <div class="history_wrapper">
-        <h3>History</h3>
-        <ul id="list" class="list"></ul>
+      <!-- History Card -->
+      <div class="card">
+        <div class="history-header">
+          <h3 class="history-title">Transaction History</h3>
+          <button class="clear-btn" id="clear-all">
+            <i class="fas fa-trash-alt"></i>
+            Clear All
+          </button>
+        </div>
+
+        <ul id="list" class="transaction-list">
+          <li class="empty-state">
+            <i class="fas fa-receipt"></i>
+            <p>No transactions yet</p>
+          </li>
+        </ul>
       </div>
 
-      <h3>Add new transaction :</h3>
-      <form id="form">
-        <div class="form-control">
-          <label for="text">Text : </label><br />
-          <input type="text" id="text" placeholder="Enter text here..." />
-        </div>
-        <div class="form-control">
-          <label for="amount"
-            >Amount <br />('-' for expense & '+' for income) : </label
-          ><br />
-          <input type="number" id="amount" placeholder="Enter amount here..." />
-        </div>
-        <button class="btn">Add Transaction</button>
-      </form>
+      <!-- Form Card -->
+      <div class="card">
+        <h3 class="form-title">Add New Transaction</h3>
+        <form id="form">
+          <!-- Income/Expense Toggle -->
+          <div class="toggle-container">
+            <div class="toggle-option income active" data-type="income">
+              <i class="fas fa-money-bill-wave"></i> Income
+            </div>
+            <div class="toggle-option expense" data-type="expense">
+              <i class="fas fa-shopping-cart"></i> Expense
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="text" class="form-label">Description</label>
+            <input
+              type="text"
+              id="text"
+              class="form-input"
+              placeholder="Enter description..."
+            />
+            <div class="error-message">Please enter a description</div>
+          </div>
+
+          <div class="form-control">
+            <label for="amount" class="form-label">Amount</label>
+            <input
+              type="text"
+              id="amount"
+              class="form-input"
+              placeholder="Enter amount..."
+            />
+            <div class="error-message">Please enter a valid amount</div>
+          </div>
+
+          <button type="submit" class="btn">
+            <i class="fas fa-plus-circle"></i>
+            Add Transaction
+          </button>
+        </form>
+      </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          <i class="fas fa-code"></i>
+          <span>Crafted with passion by Navneeth Sortur</span>
+        </div>
+        <div class="footer-icons">
+          <a
+            href="https://github.com/navneeth-sortur"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/navneeth-sortur-5b3125169/"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="mailto:navneeth.sortur@gmail.com"
+            class="footer-icon"
+            target="_blank"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 FinTrack App. Turning ideas into accomplishments.</p>
+        </div>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
