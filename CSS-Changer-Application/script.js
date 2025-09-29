@@ -56,18 +56,18 @@ function updateTime() {
 function handleInputChange() {
   try {
     const suffix = this.dataset.sizing || "";
-    let propertyName = `--${this.name}`;
-    if (this.name === "border-radius") {
-      propertyName = "--border-radius-img";
-    }
+    const propertyName = `--${this.name}`;
     const propertyValue = this.value + suffix;
 
-    // Validate inputs
-    if (
-      this.type === "range" &&
-      (this.value < this.min || this.value > this.max)
-    ) {
-      throw new Error(`Value for ${this.name} is out of range`);
+    // Validate inputs - Convert to numbers for proper comparison
+    if (this.type === "range") {
+      const val = parseFloat(this.value);
+      const minVal = parseFloat(this.min);
+      const maxVal = parseFloat(this.max);
+
+      if (val < minVal || val > maxVal) {
+        throw new Error(`Value for ${this.name} is out of range`);
+      }
     }
 
     // Update CSS custom property
@@ -91,7 +91,7 @@ function updateValueDisplays() {
 
   widthValue.textContent = document.getElementById("width").value + "%";
   borderRadiusValue.textContent =
-    document.getElementById("border-radius").value + "px";
+    document.getElementById("border-radius-img").value + "px";
   paddingValue.textContent = document.getElementById("padding").value + "px";
   blurValue.textContent = document.getElementById("blur").value + "px";
 }
@@ -102,7 +102,7 @@ function resetToDefaults() {
     // Reset input values
     document.getElementById("base").value = "#4a6cf7";
     document.getElementById("width").value = 50;
-    document.getElementById("border-radius").value = 15;
+    document.getElementById("border-radius-img").value = 15;
     document.getElementById("padding").value = 20;
     document.getElementById("blur").value = 0;
 
