@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character-Limited Textarea</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Write Your Message</h1>
+        <p>Share your thoughts within the character limit</p>
+      </div>
+
+      <div class="message-container">
+        <div class="textarea-wrapper">
+          <textarea id="message" placeholder="Start typing..."></textarea>
+          <div class="counter" id="counter">0 / 250</div>
+        </div>
+
+        <div class="hint">
+          <p>
+            You can type up to 250 characters. The border will turn red when you
+            reach the limit.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
