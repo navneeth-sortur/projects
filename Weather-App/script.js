@@ -6,7 +6,7 @@ searchBtn.addEventListener("click", () => {
   if (city) getCoordinates(city);
 });
 
-async function getCoordinates(city) {
+const getCoordinates = async city => {
   document.getElementById("error").textContent = "";
 
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`;
@@ -25,9 +25,9 @@ async function getCoordinates(city) {
   } catch (error) {
     showError("Unable to fetch weather.");
   }
-}
+};
 
-async function getWeather(lat, lon, city, country) {
+const getWeather = async (lat, lon, city, country) => {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
 
   try {
@@ -45,9 +45,9 @@ async function getWeather(lat, lon, city, country) {
   } catch (error) {
     showError("Failed to load weather.");
   }
-}
+};
 
-function getIcon(code) {
+const getIcon = code => {
   if (code === 0) return "https://img.icons8.com/fluency/96/sun.png";
   if ([1, 2, 3].includes(code))
     return "https://img.icons8.com/fluency/96/partly-cloudy-day.png";
@@ -64,10 +64,10 @@ function getIcon(code) {
   if ([95, 96, 99].includes(code))
     return "https://img.icons8.com/fluency/96/storm.png";
 
-  return "https://img.icons8.com/fluency/96/cloud.png"; // default
-}
+  return "https://img.icons8.com/fluency/96/cloud.png";
+};
 
-function updateUI(data) {
+const updateUI = data => {
   document.getElementById("weatherCard").classList.remove("hidden");
   document.getElementById("cityName").textContent = data.city;
   document.getElementById("temperature").textContent = `${data.temp}°C`;
@@ -76,9 +76,9 @@ function updateUI(data) {
     data.code
   );
   document.getElementById("weatherIcon").src = getIcon(data.code);
-}
+};
 
-function decodeWeatherCode(code) {
+const decodeWeatherCode = code => {
   const map = {
     0: "Clear sky",
     1: "Mainly clear",
@@ -101,10 +101,9 @@ function decodeWeatherCode(code) {
     95: "Thunderstorm"
   };
   return map[code] || "Unknown";
-}
+};
 
-// 6. Show error message
-function showError(msg) {
+const showError = msg => {
   document.getElementById("error").textContent = msg;
   document.getElementById("weatherCard").classList.add("hidden");
-}
+};
